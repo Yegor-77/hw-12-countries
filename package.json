@@ -1,0 +1,25 @@
+{
+  "name": "hw-12-countries",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "start": "parcel src/index.html",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Yegor-77/hw-12-countries.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Yegor-77/hw-12-countries/issues"
+  },
+  "homepage": "https://github.com/Yegor-77/hw-12-countries#readme",
+  "dependencies": {
+    "@pnotify/core": "^5.2.0",
+    "lodash.debounce": "^4.0.8",
+    "parcel": "^2.16.4"
+  }
+}
