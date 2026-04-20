@@ -1,6 +1,5 @@
-// src/index.js
 import debounce from "lodash.debounce";
-import fetchCountries from "./fetchCountries.js"; // правильный путь
+import fetchCountries from "./fetchCountries.js";
 
 const input = document.querySelector("#search");
 
@@ -8,16 +7,12 @@ input.addEventListener("input", debounce(onSearch, 500));
 
 function onSearch(e) {
   const value = e.target.value.trim();
+
   if (!value) return;
 
   fetchCountries(value)
-    .then((data) => {
-      console.log(data);
-      renderCountries(data);
-    })
-    .catch((error) => {
-      console.error(error);
-    });
+    .then((data) => renderCountries(data))
+    .catch((error) => console.log(error));
 }
 
 function renderCountries(countries) {
