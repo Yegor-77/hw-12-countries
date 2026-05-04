@@ -1,4 +1,3 @@
-import debounce from "lodash.debounce";
 import fetchCountries from "./fetchCountries.js";
 
 const input = document.querySelector("#search");
@@ -8,11 +7,16 @@ input.addEventListener("input", debounce(onSearch, 500));
 function onSearch(e) {
   const value = e.target.value.trim();
 
-  if (!value) return;
+  if (!value) {
+    document.getElementById("countries").innerHTML = "";
+    return;
+  }
 
   fetchCountries(value)
     .then((data) => renderCountries(data))
-    .catch((error) => console.log(error));
+    .catch((error) => {
+      document.getElementById("countries").textContent = "Країну не знайдено";
+    });
 }
 
 function renderCountries(countries) {
@@ -30,4 +34,14 @@ function renderCountries(countries) {
     div.textContent = country.name;
     countriesDiv.appendChild(div);
   });
+}
+
+// 🔹 свій debounce (замість lodash)
+function debounce(fn, delay) {
+  let timeout;
+
+  return function (...args) {
+    clearTimeout(timeout);
+    timeout = setTimeout(() => fn.apply(this, args), delay);
+  };
 }
